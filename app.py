@@ -44,7 +44,7 @@ def update_blog(commit_message = 'Updates blog'):
     origin.push()
 
 # Testing the update_blog function
-random_text = 'Test Test Test Test'
+random_text = 'Hello World!!'
 
 with open(PATH_TO_BLOG/'index.html', 'w') as f:
     f.write(random_text)
