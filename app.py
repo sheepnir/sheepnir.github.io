@@ -112,20 +112,17 @@ def write_to_index(path_to_new_content):
     
     links = soup.find_all('a')
 
-    if not links:
-        last_link = soup.body
-    else:
-        last_link = links[-1]
-
     if check_for_duplicate_links(path_to_new_content, links):
         raise ValueError('Duplicate link')
     
     link_to_new_blog = soup.new_tag('a', href=Path(*path_to_new_content.parts[-2:]))
     link_to_new_blog.string = path_to_new_content.name.split('.')[0]
-    last_link.insert_after(link_to_new_blog)
+    soup.body.append(link_to_new_blog)
+    soup.body.append(soup.new_tag('br'))  # Add a line break after the link
 
     with open(PATH_TO_BLOG/'index.html', 'w') as f:
         f.write(str(soup.prettify(formatter='html')))
+
 
 
 write_to_index(create_blog_post('Test', 'This is a test', 'cover_image.jpg'))
