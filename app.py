@@ -135,7 +135,7 @@ def create_prompt(title):
     I'm Nir an expereinced product development leader.
     My area of expertise : AI, Product Management, and user expereince.
     
-    Full text: """.format(title)
+    Full text: """.format(title=title)
     return prompt
 
 title = 'The future of Product Management in the era of AI'
