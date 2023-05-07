@@ -139,7 +139,7 @@ def create_prompt(title):
     Full text: """.format(title=title)
     return prompt
 
-title = 'A playbook for Produc Management in the era of AI'
+title = 'A playbook for Product Teams in the era of AI'
 prompt = create_prompt(title)
 
 response = openai.Completion.create(
@@ -153,7 +153,7 @@ blog_content = response.choices[0]['text']
 print(blog_content)
 
 def dalle_prompt(title):
-    prompt = f'A modern painting showing {title}'
+    prompt = f'A modern 3D print showing {title}'
     return prompt
 
 image_prompt = dalle_prompt(title)
@@ -180,6 +180,8 @@ def save_image(image_url, file_name):
     return image_res.status_code
 
 
-save_image(image_url, file_name = 'title2.png')
+save_image(image_url, file_name = 'titleX.png')
 
-
+path_to_new_content = create_blog_post(title, blog_content, 'titleX.png')
+write_to_index(path_to_new_content)
+update_blog()
