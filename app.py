@@ -161,7 +161,7 @@ image_prompt = dalle_prompt(title)
 response = openai.Image.create(
     prompt=image_prompt,
     n=1,
-    size='512x512',
+    size="512x512"
 )
 
 print(response)
@@ -172,12 +172,13 @@ def save_image(image_url, file_name):
     image_res = requests.get(image_url, stream=True)
 
     if image_res.status_code == 200:
-        with open('file_name', 'wb') as f:
+        with open(file_name, 'wb') as f:
             shutil.copyfileobj(image_res.raw, f)
             print('Image downloaded successfully')
     else:
         print('Image downloading failed')
     return image_res.status_code
+
 
 save_image(image_url, file_name = 'title2.png')
 
