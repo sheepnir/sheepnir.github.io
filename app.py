@@ -5,6 +5,7 @@ from git import Repo
 from pathlib import Path
 import shutil
 from bs4 import BeautifulSoup as Soup
+import requests
 
 
 
@@ -138,7 +139,7 @@ def create_prompt(title):
     Full text: """.format(title=title)
     return prompt
 
-title = 'The future of Product Management in the era of AI'
+title = 'A playbook for Produc Management in the era of AI'
 prompt = create_prompt(title)
 
 response = openai.Completion.create(
@@ -148,12 +149,36 @@ response = openai.Completion.create(
     max_tokens=300,
 )
 
+blog_content = response.choices[0]['text']
+print(blog_content)
+
+def dalle_prompt(title):
+    prompt = f'A modern painting showing {title}'
+    return prompt
+
+image_prompt = dalle_prompt(title)
+
+response = openai.Image.create(
+    prompt=image_prompt,
+    n=1,
+    size='512x512',
+)
+
 print(response)
+image_url = response['data'][0]['url']
+print(image_url)
 
+def save_image(image_url, file_name):
+    image_res = requests.get(image_url, stream=True)
 
+    if image_res.status_code == 200:
+        with open('file_name', 'wb') as f:
+            shutil.copyfileobj(image_res.raw, f)
+            print('Image downloaded successfully')
+    else:
+        print('Image downloading failed')
+    return image_res.status_code
 
-
-
-
+save_image(image_url, file_name = 'title2.png')
 
 
