@@ -128,6 +128,27 @@ def write_to_index(path_to_new_content):
 write_to_index(create_blog_post('Test', 'This is a test', 'cover_image.jpg'))
 update_blog()
 
+def create_prompt(title):
+    prompt = """
+    Blog Post
+    Title: {title}
+    I'm Nir an expereinced product development leader.
+    My area of expertise : AI, Product Management, and user expereince.
+    
+    Full text: """.format(title)
+    return prompt
+
+title = 'The future of Product Management in the era of AI'
+prompt = create_prompt(title)
+
+response = openai.Completion.create(
+    engine="text-davinci-003",
+    prompt=create_prompt(title),
+    temperature=0.7,
+    max_tokens=300,
+)
+
+print(response)
 
 
 
