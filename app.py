@@ -126,8 +126,8 @@ def write_to_index(path_to_new_content):
 
 
 
-write_to_index(create_blog_post('Test', 'This is a test', 'cover_image.jpg'))
-update_blog()
+#write_to_index(create_blog_post('Test', 'This is a test', 'cover_image.jpg'))
+#update_blog()
 
 def create_prompt(title):
     prompt = """
