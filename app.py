@@ -161,7 +161,7 @@ image_prompt = dalle_prompt(title)
 response = openai.Image.create(
     prompt=image_prompt,
     n=1,
-    size="512x512"
+    size="1024x1024"
 )
 
 print(response)
