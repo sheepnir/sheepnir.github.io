@@ -97,7 +97,7 @@ def create_blog_post(title, content, cover_image):
             f.write(f"</head>\n")
             f.write(f"<body>\n")
             f.write(
-                f'<img src="{cover_image.name}" alt="Cover Image" style="width:500px;height:600px;" ><br/>\n'
+                f'<img src="{cover_image.name}" alt="Cover Image" style="width:250px;height:250px;" ><br/>\n'
             )
             f.write(f"<h1>{title}</h1>\n")
             f.write(f"<p>{content}</p>\n")
@@ -156,7 +156,7 @@ def create_prompt(title):
     return prompt
 
 
-title = "AI as your Product Co-Pilot and not a threat"
+title = "Will AI eliminate your Product role?"
 prompt = create_prompt(title)
 
 response = openai.Completion.create(
@@ -171,7 +171,7 @@ print(blog_content)
 
 
 def dalle_prompt(title):
-    prompt = f"A modern 3D print showing {title}"
+    prompt = f"A modern oil painting showing {title}"
     return prompt
 
 
