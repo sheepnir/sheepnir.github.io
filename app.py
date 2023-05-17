@@ -156,7 +156,7 @@ def create_prompt(title):
     return prompt
 
 
-title = "Will AI eliminate your Product role?"
+title = "Will AI replace my job ! should I be scared"
 prompt = create_prompt(title)
 
 response = openai.Completion.create(
@@ -171,13 +171,13 @@ print(blog_content)
 
 
 def dalle_prompt(title):
-    prompt = f"A modern oil painting showing {title}"
+    prompt = f"A 3D rendering of {title}"
     return prompt
 
 
 image_prompt = dalle_prompt(title)
 
-response = openai.Image.create(prompt=image_prompt, n=1, size="1024x1024")
+response = openai.Image.create(prompt=image_prompt, n=1, size="512x512")
 
 print(response)
 image_url = response["data"][0]["url"]
